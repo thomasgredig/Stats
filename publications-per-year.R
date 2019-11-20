@@ -14,7 +14,7 @@ ggplot(d, aes(Publication.Years, records)) +
   geom_histogram(stat='identity', fill='orange', col='black') +
   xlab('year') +
   theme_bw() +
-  scale_y_continuous(limits=c(0,450)) + 
+  scale_y_continuous(limits=c(0,500)) + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ggsave(file.path(path.FIGS,'CSULB-pubs.png'),
        width=6,height=5,dpi=150)
@@ -28,7 +28,7 @@ names(d)
 ggplot(d[-1,], aes(Publication.Years, records)) + 
   geom_histogram(stat='identity', fill='orange', col='black') +
   xlab('year') +
-  scale_y_continuous(limits=c(0,450)) + 
+  scale_y_continuous(limits=c(0,500)) + 
   theme_bw() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ggsave(file.path(path.FIGS,'CSULA-pubs.png'),
@@ -44,7 +44,7 @@ names(d)
 ggplot(d, aes(Publication.Years, records)) + 
   geom_histogram(stat='identity', fill='orange', col='black') +
   xlab('year') +
-  scale_y_continuous(limits=c(0,450)) + 
+  scale_y_continuous(limits=c(0,500)) + 
   theme_bw() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ggsave(file.path(path.FIGS,'CSUNorthridge-pubs.png'),
