@@ -1,9 +1,9 @@
 # Stats
- Statistics on peer-reviewed publications
+ Statistics on (mostly) peer-reviewed publications according to Web of Science
 
 ## Publications from Long Beach
 
-Yearly distribution of publications from CSU Long Beach
+Yearly distribution of WoS publications from CSU Long Beach
 
 ![Publications per year for CSU Long Beach](images/CSULB-pubs.png)
 
