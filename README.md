@@ -21,10 +21,9 @@ The same statistics for UC Irvine
 
 ## TT/TF Faculty
 
-CSULB: 820 (2012), 811, 827, 821 (2015), 845 (2016), 852 (2017), 853, 849
-CSUN: 818 (2017)
-CSU Fullerton: 798 (2017)
-UC Irvine: 920
+See [Faculty at University](data/university-faculty.csv)
+
+
 
 ## Resources:
 
