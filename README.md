@@ -24,6 +24,11 @@ The same statistics for UC Irvine
 See [Faculty at University](data/university-faculty.csv)
 
 
+## State Expenditures
+
+See [State Expenditure Data](https://www.census.gov/data/datasets/2017/econ/local/public-use-datasets.html)
+
+
 
 ## Resources:
 
