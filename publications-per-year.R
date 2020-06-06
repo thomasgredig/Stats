@@ -1,4 +1,6 @@
 library(ggplot2)
+library(ggthemes)
+library(dplyr)
 path.RAW = 'data/'
 path.FIGS = 'images/'
 
@@ -36,6 +38,19 @@ for(i in 1:nrow(univ.list)) {
 }
 
 
+# make a facet graph
+r %>%
+  filter(year<2020 & year>1998) %>%
+  filter(substr(univ,1,3)=='CSU') %>%
+  ggplot(aes(year, records, color=univ)) +
+  geom_path(size=2) +
+  ylab('publications in WoS') +
+  theme_economist()
 
-
-
+r %>%
+  filter(year<2020 & year>1998) %>%
+  filter(substr(univ,1,2)=='UC') %>%
+  ggplot(aes(year, records, color=univ)) +
+  geom_path(size=2) +
+  ylab('publications in WoS') +
+  theme_economist()
