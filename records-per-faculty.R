@@ -16,6 +16,5 @@ head(du)
 plot(du$records.per.faculty)
 ggplot(du, aes(University, records.per.faculty, col=factor(Year))) + 
   geom_point(size=4) +
-  
   theme_bw() +
   scale_y_continuous(limits=c(0,2.5))
