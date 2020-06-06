@@ -2,81 +2,40 @@ library(ggplot2)
 path.RAW = 'data/'
 path.FIGS = 'images/'
 
-dir(path.RAW)
-
-## CSU Long Beach
-d = read.csv(file.path(path.RAW,'pub-zp90840-year.txt'),sep='\t')
-d= na.omit(d)
-head(d)
-names(d)
-
-ggplot(d, aes(Publication.Years, records)) + 
-  geom_histogram(stat='identity', fill='orange', col='black') +
-  xlab('year') +
-  theme_bw() +
-  scale_y_continuous(limits=c(0,500)) + 
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggsave(file.path(path.FIGS,'CSULB-pubs.png'),
-       width=6,height=5,dpi=150)
-
-## CSU Los Angeles
-d = read.csv(file.path(path.RAW,'pub-zp90032-year.txt'),sep='\t')
-d= na.omit(d)
-head(d)
-names(d)
-
-ggplot(d[-1,], aes(Publication.Years, records)) + 
-  geom_histogram(stat='identity', fill='orange', col='black') +
-  xlab('year') +
-  scale_y_continuous(limits=c(0,500)) + 
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggsave(file.path(path.FIGS,'CSULA-pubs.png'),
-       width=6,height=5,dpi=150)
+# save all the images
+saveUniv <- function(m,name, longname) {
+  ggplot(m, aes(year, records)) + 
+    geom_histogram(stat='identity', fill='orange', col='black') +
+    scale_x_continuous(limits=c(1995,2019)) + 
+    #scale_y_continuous(limits=c(0,2000)) + 
+    xlab('year') +
+    ggtitle(longname) + 
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  ggsave(file.path(path.FIGS,paste0(name,'-pubs.png')),
+         width=6,height=5,dpi=150) 
+}
 
 
-## CSU Northridge
-d = read.csv(file.path(path.RAW,'pub-zp91330-year.txt'),sep='\t')
-d= na.omit(d)
-head(d)
-names(d)
+# load all the data
+univ.list = read.csv('data/universityList.csv')
+r = data.frame()
+for(i in 1:nrow(univ.list)) {
+  fname = file.path(path.RAW, paste0('pub-zp',univ.list$zipCode[i],'-year.txt'))
+  print(fname)
 
-ggplot(d, aes(Publication.Years, records)) + 
-  geom_histogram(stat='identity', fill='orange', col='black') +
-  xlab('year') +
-  scale_y_continuous(limits=c(0,500)) + 
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggsave(file.path(path.FIGS,'CSUNorthridge-pubs.png'),
-       width=6,height=5,dpi=150)
-
-
-## UC Irvine
-d = read.csv(file.path(path.RAW,'pub-zp92697-year.txt'),sep='\t')
-d= na.omit(d)
-head(d)
-names(d)
-
-ggplot(d[-1,], aes(Publication.Years, records)) + 
-  geom_histogram(stat='identity', fill='orange', col='black') +
-  xlab('year') +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggsave(file.path(path.FIGS,'UCIrvine-pubs.png'),
-       width=6,height=5,dpi=150)
+  if (file.exists(fname)) {
+    d = na.omit(read.csv(fname,sep='\t', stringsAsFactors = FALSE))
+    names(d) = c('year','records','percentage')
+    d$year = as.numeric(d$year)
+    d$univ = univ.list$shortName[i]
+    d$name = univ.list$longName[i]
+    saveUniv(d, univ.list$shortName[i], univ.list$longName[i])
+    rbind(r,d) -> r
+  }
+}
 
 
-## UCLA
-d = read.csv(file.path(path.RAW,'pub-zp90095-year.txt'),sep='\t')
-d= na.omit(d)
-head(d)
-names(d)
 
-ggplot(d[-1,], aes(Publication.Years, records)) + 
-  geom_histogram(stat='identity', fill='orange', col='black') +
-  xlab('year') +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggsave(file.path(path.FIGS,'UCLA-pubs.png'),
-       width=6,height=5,dpi=150)
+
 
