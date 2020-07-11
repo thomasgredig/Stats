@@ -18,7 +18,9 @@ See [Faculty at University](data/university-faculty.csv)
 
 See [State Expenditure Data](https://www.census.gov/data/datasets/2017/econ/local/public-use-datasets.html)
 
+## World University Rankings
 
+See [World University Rankings](World-University-Rankings.md)
 
 ## Resources:
 

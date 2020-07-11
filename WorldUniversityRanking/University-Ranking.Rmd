@@ -1,0 +1,92 @@
+---
+html_document:
+  code_folding: hide
+author: "Thomas Gredig"
+fig_width: 8
+output:
+  html_document:
+    df_print: paged
+  pdf_document: null
+  toc: yes
+title: 'Kaggle: World University Ranking Data Set'
+number_sections: no
+highlight: tango
+theme: cosmo
+fig_height: 6
+toc: yes
+---
+
+```{r libraries_and_packages_management,message=FALSE,warning=FALSE}
+#use pacman for package management
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(knitr, kableExtra, formattable, dplyr, tm, tidyr, wordcloud, httr,
+               ggplot2, treemap, gridExtra, grid, fmsb, leaflet, plotly,reshape, corrplot,ggrepel)
+
+options(knitr.table.format = "html") 
+```
+
+# Data Loading
+
+Let's get the data
+
+```{r}
+source('load-data.R')
+```
+
+# Display Data {.tabset .tabset-fade .tabset-pills}
+
+We have 6 data files in University Rankings dataset, as following:
+
+* cwurData.csv (`r nrow(cwurData)` rows, `r length(names(cwurData))` columns)  
+* education_expenditure_supplementary_data.csv (`r nrow(educationExpenditure)` rows, `r length(names(educationExpenditure))` columns)  
+* educational_attainment_supplementary_data.csv (`r nrow(educationalAttainment)` rows, `r length(names(educationalAttainment))` columns)  
+* school_and_country_table.csv (`r nrow(schoolCountry)` rows, `r length(names(schoolCountry))` columns)  
+* shanghaiData.csv (`r nrow(shanghaiData)` rows, `r length(names(shanghaiData))` columns)  
+* timesData.csv (`r nrow(timesData)` rows, `r length(names(timesData))` columns)  
+
+
+
+## CWUR
+```{r glimpse_cwurData}
+#knitr::kable(head(cwurData,10),caption="Center World University Rankings information (first 10 rows)")
+kable(head(cwurData,10), "html") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+glimpse(cwurData)
+```
+
+## Shanghai
+```{r glimpse_shanghaiData}
+knitr::kable(head(shanghaiData,10),caption="Shanghai Ranking information (first 10 rows)")
+glimpse(shanghaiData)
+```
+
+## Times
+```{r glimpse_timesData}
+knitr::kable(head(timesData,10),caption="Times Higher Education World University Rankings data information (first 10 rows)")
+glimpse(timesData)
+```
+
+## Education expenditure
+```{r glimpse_educationExpenditure}
+knitr::kable(head(educationExpenditure,10),caption="Education expenditure information (first 10 rows)")
+glimpse(educationExpenditure)
+```
+
+## Education attainment
+```{r glimpse_educationalAttainment}
+knitr::kable(head(educationalAttainment,10),caption="Education attainment information (first 10 rows)")
+glimpse(educationalAttainment)
+```
+
+## School & country
+```{r glimpse_schoolCountry}
+knitr::kable(head(schoolCountry,10),caption="School & country information (first 10 rows)")
+glimpse(schoolCountry)
+```
+
+
+# Analysis
+
+```{r}
+
+```

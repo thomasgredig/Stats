@@ -4,3 +4,7 @@
 .Rhistory
 .RData
 data/FacultyDiversity.xlsx
+./WorldUniversityRanking/kaggle-template_files/*
+./WorldUniversityRanking/kaggle-template_files/figure-latex/*
+*.pdf
+README.html
